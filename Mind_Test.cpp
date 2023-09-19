@@ -1,7 +1,7 @@
-#include <iostream>
-#include <string>
-#include <cstdlib>
 #include <Windows.h>
+#include <iostream>
+#include <cstdlib>
+#include <string>
 #include <time.h>
 using namespace std;
 int width = 2;
@@ -9,8 +9,8 @@ int lenth = 2;
 int score = 0;
 int tri = 1;
 int result = 0;
-time_t start=0;
-time_t End=0;
+time_t start = 0;
+time_t End = 0;
 bool stand()
 {
 	cout << "\t\t## Welcome ##\n"
@@ -20,7 +20,7 @@ bool stand()
 		<< "[1]-Main Menu\n"
 		<< "[0]-Exit\n\n";
 	int choice;
-	do 
+	do
 	{
 		cout << "Enter Your Choice : ";
 		cin >> choice;
@@ -38,11 +38,11 @@ int level()
 		<< "[1]-Easy\n"
 		<< "[2]-Medium\n"
 		<< "[3]-Hard\n";
-		//<< "Enter Your Answer : ";
+	//<< "Enter Your Answer : ";
 	do {
 		cout << "Enter Your Choice : ";
 		cin >> choice;
-	} while (choice >3 || choice < 1);
+	} while (choice > 3 || choice < 1);
 	return choice;
 }
 // // // /////////////// // /// // ///// / / /// //////
@@ -58,12 +58,12 @@ void shape(int level)
 		cout << "|\t\t|trial : " << tri++ << "/5 |" << "\t\t\t|Score : " << score << " |\t\t|\n"
 			<< "-------------------------------------------------------------------------\n\n\n";
 		srand(time(0));
-		width = rand() % (level*2 - 4 - 1) + level*2;
-		lenth = rand() % (level*2 - 4 - 1) + level*2;
+		width = rand() % ((level * 2) + 4 - 1) + level *2;
+		lenth = rand() % ((level * 2) + 4 - 1) + level *2;
 		result = width * lenth;
 		for (int i = 0; i < width; i++)
 		{
-		cout << "\t\t";
+			cout << "\t\t";
 			for (int j = 0; j < lenth; j++)
 			{
 				cout << "#";
@@ -76,7 +76,7 @@ void shape(int level)
 		Sleep(500);
 		//pause("5");
 		system("cls");
-		if (choice == result&& End<=5)
+		if (choice == result && End <= 5)
 		{
 			cout << "Right Answer...\n";
 			score++;
@@ -90,19 +90,19 @@ void shape(int level)
 			cout << "Wrong Answer...\n";
 		}
 		cout << "You Took : " << End << " s.\n";
-         Sleep(1000);
+		Sleep(1000);
 		system("cls");
 		cout << "Please Wait ....... ";
-		for (int u = 2; u>=0 ; u--)
+		for (int u = 2; u >= 0; u--)
 		{
-			cout<<u<<"\b";
+			cout << u << "\b";
 			Sleep(1000);
 			//system("cls");
 		}
 		cout << endl;
 		if (tri == 6)
 		{
-			cout << "Your Score is : " << (score/ 5) * 100 <<" % " << endl;
+			cout << "Your Score is : " << (score / 5) * 100 << " % " << endl;
 			cout << "\t\t Wish You Enjoyed <Thanks>\n";
 			break;
 		}
@@ -113,18 +113,19 @@ void shape(int level)
 // // // /////////////// // /// // ///// / / /// //////
 //*****************************************************
 int main()
-{    
+{
 	int complete = -1;
-	do 
+	do
 	{
 		if (stand())
 		{
+			tri=1;
 			system("CLS");
 			shape(level());
 		}
-	else
-		  cout << "\t\t## THANKS.... ##";
-			cout << "\n" << "Do You Want To Try Again ([1]-Yes/[0]-N) : ";
-			cin >> complete;
+		else
+			cout << "\t\t## THANKS.... ##";
+		cout << "\n" << "Do You Want To Try Again ([1]-Yes/[0]-N) : ";
+		cin >> complete;
 	} while (complete);
 }
